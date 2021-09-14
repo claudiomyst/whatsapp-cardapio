@@ -7,6 +7,11 @@ $jq(document).ready(function(){
         $jq('#resultado-popup').remove();
     });
 
+    $jq(document).on( 'click', '.remove-prato', function(e){
+        e.preventDefault();
+        $jq(this).closest('fieldset.prato').remove();
+    });
+
 
 
     $jq(document).on( 'click', '#add-prato', function(){
@@ -15,6 +20,7 @@ $jq(document).ready(function(){
 
         $jq('#pratos').append('\
         <fieldset class="prato">\
+            <a class="remove-prato" href="#"><img src="assets/images/close-escuro.svg" width="14" height="14" /></a>\
             <p class="form-fiel field-text">\
                 <label>Nome do prato <span class="req">*</span>\
                     <input type="text" name="prato[' + $fields_index + '][nome_do_prato]" value="" required placeholder="Nome do prato">\
