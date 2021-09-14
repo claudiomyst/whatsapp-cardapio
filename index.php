@@ -132,15 +132,18 @@
                 <a id="close-popup" href="#"><img src="assets/images/close.svg" width="20" height="20" /></a>
                 <pre id="resultado"><code><?php echo $resultado; ?></code></pre>
 
-    <?php
-        $shortcode_array = array(
-            "<b>"  => '*',
-            "</b>" => '*',
-            "<em>" => '_',
-            "</em>" => '_',
-        );
-        $resultado = strtr($resultado, $shortcode_array);
-    ?>
+                <?php
+                    /**
+                     * Transformando as tags html em markdown do whatsapp.
+                     */
+                    $shortcode_array = array(
+                        "<b>"  => '*',
+                        "</b>" => '*',
+                        "<em>" => '_',
+                        "</em>" => '_',
+                    );
+                    $resultado = strtr($resultado, $shortcode_array);
+                ?>
 
                 <p id="whatsapp-action">
                     <a class="button" href="https://wa.me/55<?php echo $tel; ?>?text=<?php echo rawurlencode(trim(strip_tags($resultado))); ?>" target="_blank">Enviar para o whatsapp</a>
